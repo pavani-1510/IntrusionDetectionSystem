@@ -141,8 +141,3 @@ Examples:
 ✅ NSL-KDD: Benchmark dataset, cleaned version of KDD’99
 ✅ CICIDS2017: Large, realistic with modern attack scenarios
 
----
-
-📌 End of guide.
-
-If you’d like, I can also create a printable PDF file of the above for you. Just say: **“Generate PDFs”** and I’ll deliver the downloadable files.
