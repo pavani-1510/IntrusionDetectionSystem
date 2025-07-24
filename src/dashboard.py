@@ -1,5 +1,8 @@
 from dash import Dash, dcc, html
+from dash.dependencies import Input, Output
 import plotly.graph_objs as go
+import random
+import datetime
 
 app = Dash(__name__)
 
@@ -16,9 +19,9 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-    [dash.dependencies.Output('live-update-graph', 'figure'),
-     dash.dependencies.Output('live-update-text', 'children')],
-    [dash.dependencies.Input('interval-component', 'n_intervals')]
+    [Output('live-update-graph', 'figure'),
+     Output('live-update-text', 'children')],
+    [Input('interval-component', 'n_intervals')]
 )
 def update_graph(n):
     # Placeholder for real-time data fetching and processing
@@ -33,4 +36,4 @@ def update_graph(n):
     return figure, "Updated at {}".format(datetime.datetime.now())
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
