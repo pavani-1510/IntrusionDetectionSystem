@@ -116,5 +116,5 @@ Licensed under the MIT License – feel free to use, modify, and share.
 
 **Pavani R**
 B.Tech CSE | AI/ML | Cybersecurity Enthusiast
-📫 [pavani@example.com](mailto:pavanikangundi@gmail.com) (replace with your contact)
+📫 [pavanikangundi@gmail.com](mailto:pavanikangundi@gmail.com) 
 🔗 [LinkedIn](https://www.linkedin.com/in/r-pavani)
