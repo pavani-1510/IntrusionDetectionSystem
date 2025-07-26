@@ -50,9 +50,9 @@ class ModelTrainer:
         joblib.dump(self.model, filename)
 
 if __name__ == "__main__":
-    data = pd.read_csv('../data/packets.csv')  # Use relative path
+    # Example usage
+    data = pd.read_csv('/home/pavani/Documents/VSCODE/IntrusionDetectionSystem/dataset/processed_data.csv')  # Replace with your dataset path
     trainer = ModelTrainer(data)
     accuracy = trainer.fit()
-    print(f"✅ Model trained with accuracy: {accuracy:.2f}")
-    trainer.save_model('../models/trained_model.pkl')
-    print("🎉 Model saved to '../models/trained_model.pkl'")
+    print(f"Model accuracy: {accuracy}")
+    trainer.save_model('/home/pavani/Documents/VSCODE/IntrusionDetectionSystem//models/trained_model.pkl')
