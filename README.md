@@ -1,143 +1,120 @@
-# 📄 Project Guide: Anomaly-based Intrusion Detection System with Machine Learning
+# 🛡️ Intrusion Detection System using Machine Learning
 
-### 1️⃣ What is an IDS? Why is it important?
-
-An Intrusion Detection System (IDS) is a security tool that monitors a computer network for suspicious or malicious activity. Anomaly-based IDS detects attacks by identifying unusual patterns in network traffic, even if the attack is unknown.
-
-### 2️⃣ What does this project do?
-
-This project builds an anomaly-based IDS that:
-
-* Collects network traffic data
-* Extracts features from the data
-* Trains an ML model on normal traffic
-* Flags unusual traffic as suspicious
-* Displays results on a dashboard
-
-### 3️⃣ System Architecture Diagram
-
-```
-           +---------------------+
-           | Packet/Data Capture |
-           +---------------------+
-                      ↓
-           +---------------------+
-           | Feature Extraction  |
-           +---------------------+
-                      ↓
-           +---------------------+
-           | ML Model Inference  |
-           +---------------------+
-                      ↓
-           +---------------------+
-           | Alert & Dashboard   |
-           +---------------------+
-```
-
-### 4️⃣ Tools & Technologies Required
-
-* Python 3.x
-* Libraries: pandas, scikit-learn, matplotlib, seaborn
-* Streamlit/Dash (for dashboard)
-* Dataset: NSL-KDD / CICIDS2017
-* Wireshark/tcpdump (optional, for real traffic)
-
-### 5️⃣ Dataset(s) to use
-
-✅ NSL-KDD (recommended for beginners, small & cleaned)
-✅ CICIDS2017 (larger, realistic, modern)
-
-### 6️⃣ Step-by-Step Implementation Plan
-
-✅ Week 1: Research IDS & datasets, install tools
-✅ Week 2: Load & explore dataset, clean & extract features
-✅ Week 3: Train Isolation Forest model, test on dataset
-✅ Week 4: Build dashboard & add real-time components
-✅ Week 5: Write README, test, record demo
-
-### 7️⃣ Optional Enhancements
-
-* Real-time packet sniffing
-* Autoencoder-based deep learning
-* Email/SMS alerts
-* Docker deployment
-
-### 8️⃣ Expected Deliverables
-
-* Python code
-* Trained ML model
-* Dashboard app
-* Dataset & cleaned CSVs
-* README with usage instructions
-
-### 9️⃣ How to showcase it on Resume & GitHub
-
-✅ Resume line:
-
-> Designed and built an anomaly-based Intrusion Detection System using Isolation Forest, achieving 92% detection accuracy on NSL-KDD dataset with real-time dashboard.
-
-✅ GitHub:
-
-* Clean repo structure: `/src`, `/data`, `/notebooks`, `README.md`
-* Include sample screenshots & demo video link
-
-### 🔟 References
-
-* NSL-KDD: [http://www.unb.ca/cic/datasets/nsl.html](http://www.unb.ca/cic/datasets/nsl.html)
-* CICIDS2017: [https://www.unb.ca/cic/datasets/ids-2017.html](https://www.unb.ca/cic/datasets/ids-2017.html)
-* Isolation Forest: [https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)
+An **Anomaly-Based Intrusion Detection System (IDS)** that downloads a dataset, preprocesses it, trains a machine learning model, and displays a visual dashboard to monitor intrusions. Built using Python and the Isolation Forest algorithm.
 
 ---
 
-## 📄 Concepts & Background: IDS & Anomaly Detection
+### 🚀 How It Works
 
-### 1️⃣ Basics of Cybersecurity
+1. **`data_preprocessing.py`**: Downloads and preprocesses the dataset.
+2. **`model_training.py`**: Trains a machine learning model using the preprocessed data.
+3. **`dashboard.py`**: Launches a simple dashboard to show predictions or system status.
 
-Cybersecurity protects computers & networks from attacks that can steal or damage data.
+---
 
-### 2️⃣ What is Network Traffic?
+### 📁 Project Structure
 
-All communication over a network (packets, flows) between devices.
+```
+IntrusionDetectionSystem/
+│
+├── src/
+│   ├── data_preprocessing.py       # Download + clean + prepare dataset
+│   ├── model_training.py           # Trains and saves the ML model
+│   └── dashboard.py                # Launches monitoring dashboard
+│   
+│
+├── models/
+│   └── isolation_forest_model.pkl  # Trained model (saved here)
+│
+├── data/
+│   └── dataset.csv                 # Auto-downloaded dataset
+│
+├── requirements.txt               # Python dependencies
+└── README.md                      # This file
+```
 
-### 3️⃣ What are Cyberattacks & Intrusions?
+---
 
-Unauthorized activities like hacking, data theft, malware installation, DoS.
+### ⚙️ Installation
 
-### 4️⃣ What is an IDS?
+1. **Clone the repository**
 
-An IDS is a system that detects intrusions by monitoring and analyzing network or host activity.
+   ```bash
+   git clone https://github.com/your-username/IntrusionDetectionSystem.git
+   cd IntrusionDetectionSystem
+   ```
 
-### 5️⃣ Types of IDS
+2. **Install dependencies**
 
-✅ Signature-based: Detects known attack patterns
-✅ Anomaly-based: Learns normal behavior, flags deviations
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### 6️⃣ Why use ML for IDS?
+---
 
-ML can detect novel attacks that don’t match known signatures.
+### 🧪 Usage
 
-### 7️⃣ How does ML-based Anomaly Detection work?
+#### 1. Run Data Preprocessing
 
-Train ML on “normal” data → test on new data → flag high deviations as anomalies.
+This script downloads and processes the dataset into `data/processed.csv`.
 
-### 8️⃣ Key ML Algorithms
+```bash
+python src/data_preprocessing.py
+```
 
-✅ Isolation Forest: Detects outliers by isolating points
-✅ Autoencoder: Neural network learns to reconstruct normal data, high error → anomaly
-✅ One-Class SVM: Separates normal from abnormal in feature space
+#### 2. Train the Model
 
-### 9️⃣ Features of Network Traffic
+Trains an Isolation Forest model and saves it to `models/`.
 
-Examples:
+```bash
+python src/model_training.py
+```
 
-* Duration of connection
-* Protocol type (TCP/UDP/ICMP)
-* Number of bytes sent/received
-* Flags set (SYN, ACK, etc.)
-* Number of failed login attempts
+#### 3. Launch the Dashboard
 
-### 🔟 Common Datasets
+Starts a GUI or web-based dashboard to view predictions or stats.
 
-✅ NSL-KDD: Benchmark dataset, cleaned version of KDD’99
-✅ CICIDS2017: Large, realistic with modern attack scenarios
+```bash
+python src/dashboard.py
+```
 
+> ⚠️ Make sure `model_training.py` has completed successfully before launching the dashboard.
+
+---
+
+### 💡 Features
+
+* Automatic dataset fetching and cleaning
+* Isolation Forest for anomaly detection
+* Modular and easy-to-extend pipeline
+* (Optional) Dashboard to monitor intrusions visually
+
+---
+
+### 🧠 Model Used
+
+* **Isolation Forest** (unsupervised anomaly detection)
+
+---
+
+### ✅ Future Enhancements
+
+* [ ] Add support for live network traffic via Scapy
+* [ ] Improve dashboard UI (e.g., Streamlit or Flask)
+* [ ] Add logs/alerts when intrusions are detected
+* [ ] Save metrics and generate ROC/PR curves
+
+---
+
+### 📄 License
+
+Licensed under the MIT License – feel free to use, modify, and share.
+
+---
+
+### 👩‍💻 Author
+
+**Pavani R**
+B.Tech CSE | AI/ML | Cybersecurity Enthusiast
+📫 [pavani@example.com](mailto:pavanikangundi@gmail.com) (replace with your contact)
+🔗 [LinkedIn](https://www.linkedin.com/in/r-pavani)

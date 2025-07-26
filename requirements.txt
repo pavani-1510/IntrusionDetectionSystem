@@ -8,3 +8,4 @@ scipy
 jupyter
 pyyaml
 requests
+kagglehub
